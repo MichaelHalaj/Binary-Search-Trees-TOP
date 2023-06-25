@@ -71,6 +71,39 @@ class Tree {
             this.insert(value, node.left);
         }
     }
+
+    delete(value, node = this.root) {
+        if(node === null) {
+            return node;
+        }
+        if(value === node.data) {
+            if(node.left === null) {
+                return node.right;
+            } else if (node.right === null) {
+                return node.left;
+            } else {
+                let succParent = node;
+                let succ = node.right;
+                while(succ.left !== null) {
+                    succParent = succ;
+                    succ = succ.left;
+                }
+                if(succParent !== node) {
+                    succParent.left = succ.right;
+                } else {
+                    succParent.right = succ.right;
+                }
+                node.setData = succ.data;
+                return node; 
+            }            
+        }
+        if(value > node.data) {
+            node.right = this.delete(value, node.right);
+        } else if(value < node.data) {
+            node.left = this.delete(value, node.left);
+        }
+        return node;
+    }
 }
 
 export { Tree, prettyPrint };

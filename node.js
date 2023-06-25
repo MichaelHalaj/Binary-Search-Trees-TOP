@@ -1,11 +1,21 @@
 class Node {
     left;
     right;
+    data;
     constructor(value = null, left = null, right = null) {
         this.data = value;
         this.left = left;
         this.right = right;
     }
+
+    get data() {
+        return this.data;
+    }
+
+    set setData(val) {
+        this.data = val;
+    }
+
     get right() {
         return this.right;
     }
