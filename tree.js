@@ -164,10 +164,16 @@ class Tree {
     }
 
     preorder(callback, array = [], node = this.root) {
+        if(node === null) {
+            return array;
+        }
         if(callback) {
             callback(node);
         }
-
+        array.push(node.data);
+        this.preorder(null, array, node.left);
+        this.preorder(null, array, node.right);
+        return array;
     }
 }
 
