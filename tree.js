@@ -175,6 +175,19 @@ class Tree {
         this.preorder(null, array, node.right);
         return array;
     }
+
+    postorder(callback, array = [], node = this.root) {
+        if(node === null) {
+            return array;
+        }
+        if(callback) {
+            callback(node);
+        }
+        this.postorder(null, array, node.left);
+        this.postorder(null, array, node.right);
+        array.push(node.data);
+        return array;
+    }
 }
 
 export { Tree, prettyPrint };
