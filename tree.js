@@ -147,11 +147,11 @@ class Tree {
     }
 
     inorder(callback, array = [], node = this.root) {
-        if(callback) {
-            callback(node);
-        }
         if(node === null) {
             return array;
+        }
+        if(callback) {
+            callback(node);
         }
         if(node.left === null && node.right === null) {
             array.push(node.data);
@@ -161,6 +161,13 @@ class Tree {
         array.push(node.data);
         this.inorder(null, array, node.right);
         return array;
+    }
+
+    preorder(callback, array = [], node = this.root) {
+        if(callback) {
+            callback(node);
+        }
+
     }
 }
 
