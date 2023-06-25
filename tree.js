@@ -57,9 +57,11 @@ class Tree {
         }
         if(value < node.data && node.left === null) {
             node.left = new Node(value);
+            this.array.push(value);
         }
         if(value > node.data && node.right === null) {
             node.right = new Node(value);
+            this.array.push(value);``
         }
         if(node.data === value) {
             return;
@@ -77,6 +79,9 @@ class Tree {
             return node;
         }
         if(value === node.data) {
+            this.array = this.array.filter((item) => {
+                return item !== value;
+            });
             if(node.left === null) {
                 return node.right;
             } else if (node.right === null) {
@@ -117,6 +122,28 @@ class Tree {
         } else {
             return this.find(value, node.left);
         }
+    }
+
+    levelOrder(callback) {
+        let result = [];
+        let q = [this.root];
+        while(q.length !== 0){
+            let size = q.length;
+            for(let i = 0; i < size; i++){
+                let node = q.shift();
+                if(node.left !== null) {
+                    q.push(node.left);
+                }
+                if(node.right !== null) {
+                    q.push(node.right);
+                }
+                if(callback){
+                    callback(node);
+                } 
+                result.push(node.data);
+            }
+        }
+        return result;
     }
 }
 
