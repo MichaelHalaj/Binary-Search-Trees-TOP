@@ -1,6 +1,8 @@
 class Node {
+    left;
+    right;
     constructor(value = null, left = null, right = null) {
-        this.value = value;
+        this.data = value;
         this.left = left;
         this.right = right;
     }
@@ -12,11 +14,12 @@ class Node {
         return this.left;
     }
 
-    set left(val) {
+    set setLeft(val) {
         this.left = val;
     }
 
-    set right(val) {
+    set setRight(val) {
         this.right = val;
     }
 }
+export default Node;
