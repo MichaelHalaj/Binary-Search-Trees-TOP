@@ -51,8 +51,25 @@ class Tree {
         return node;
     }
 
-    insert(value) {
-        
+    insert(value, node = this.root) {
+        if(node === null) {
+            return;
+        }
+        if(value < node.data && node.left === null) {
+            node.left = new Node(value);
+        }
+        if(value > node.data && node.right === null) {
+            node.right = new Node(value);
+        }
+        if(node.data === value) {
+            return;
+        }
+        if(value > node.data) {
+            this.insert(value, node.right);
+        }
+        if(value < node.data) {
+            this.insert(value, node.left);
+        }
     }
 }
 
