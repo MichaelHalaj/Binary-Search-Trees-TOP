@@ -124,9 +124,9 @@ class Tree {
         }
     }
 
-    levelOrder(callback) {
+    levelOrder(callback, q = []) {
         let result = [];
-        let q = [this.root];
+        q.push(this.root);
         while(q.length !== 0){
             let size = q.length;
             for(let i = 0; i < size; i++){
@@ -144,6 +144,23 @@ class Tree {
             }
         }
         return result;
+    }
+
+    inorder(callback, array = [], node = this.root) {
+        if(callback) {
+            callback(node);
+        }
+        if(node === null) {
+            return array;
+        }
+        if(node.left === null && node.right === null) {
+            array.push(node.data);
+            return array;
+        }
+        this.inorder(null, array, node.left);
+        array.push(node.data);
+        this.inorder(null, array, node.right);
+        return array;
     }
 }
 

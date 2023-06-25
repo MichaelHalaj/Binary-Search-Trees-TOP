@@ -22,3 +22,4 @@ console.log(tree.find(11));
 console.log(tree.find(67));
 console.log(tree.find(453));
 console.log(tree.levelOrder());
+console.log(tree.inorder());
