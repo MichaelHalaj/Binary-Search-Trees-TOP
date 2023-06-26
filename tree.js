@@ -188,6 +188,16 @@ class Tree {
         array.push(node.data);
         return array;
     }
+
+    height(node) {
+        if(node === null) {
+            return 0;
+        }
+        if(node.left === null && node.right === null) {
+            return 0;
+        }
+        return 1 + Math.max(this.height(node.left), this.height(node.right));
+    }
 }
 
 export { Tree, prettyPrint };

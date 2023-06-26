@@ -25,3 +25,4 @@ console.log(tree.levelOrder());
 console.log(tree.inorder());
 console.log(tree.preorder());
 console.log(tree.postorder());
+console.log(tree.height(tree.root));
