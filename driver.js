@@ -8,17 +8,21 @@ function createRandomArray() {
 
 
 const tree = new Tree(createRandomArray());
-console.log(tree.isBalanced());
-console.log(tree.levelOrder());
-console.log(tree.preorder());
-console.log(tree.postorder());
-console.log(tree.inorder());
+console.log('Balanced: ' + tree.isBalanced());
+console.log('Level Order: ' + tree.levelOrder());
+console.log('Preorder: ' + tree.preorder());
+console.log('Postorder: ' + tree.postorder());
+console.log('Inorder: ' + tree.inorder());
 for(let i = 0; i < 5; i++) {
     tree.insert(Math.floor(Math.random() * 100));
 }
-console.log(tree.isBalanced());
+console.log('Balanced: ' + tree.isBalanced());
 prettyPrint(tree.root);
 tree.rebalance();
 console.log(tree.isBalanced());
 prettyPrint(tree.root);
+console.log('Level Order: ' + tree.levelOrder());
+console.log('Preorder: ' + tree.preorder());
+console.log('Postorder: ' + tree.postorder());
+console.log('Inorder: ' + tree.inorder());
 
