@@ -212,19 +212,35 @@ class Tree {
         }
     }
 
-    isBalanced(node = this.root) {
+    isBalancedDriver(node) {
         if(node === null) {
+            return 0;
+        }
+
+        const leftHeight = this.isBalancedDriver(node.left);
+        const rightHeight = this.isBalancedDriver(node.right);
+
+        const diff = Math.abs(leftHeight - rightHeight);
+        if(diff > 1 || leftHeight === -1 || rightHeight === -1) {
+            return -1;
+        } else {
+            return Math.max(leftHeight, rightHeight) + 1;
+        }
+    }
+    isBalanced(node = this.root) {
+        return this.isBalancedDriver(node) !== -1;
+        /* if(node === null) {
             return true;
         }
         const leftHeight = this.height(node.left);
         const rightHeight = this.height(node.right);
 
         const diff = Math.abs(leftHeight - rightHeight);
-        if(diff !== 0 && diff !== 1){
+        if(diff > 1){
             return false;
         } else {
             return this.isBalanced(node.left) && this.isBalanced(node.right);
-        }
+        } */
     }
 
     rebalance() {
