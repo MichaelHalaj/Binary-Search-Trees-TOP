@@ -226,6 +226,11 @@ class Tree {
             return this.isBalanced(node.left) && this.isBalanced(node.right);
         }
     }
+
+    rebalance() {
+       this.array = this.inorder();
+       this.root = this.buildTree(this.array); 
+    }
 }
 
 export { Tree, prettyPrint };
