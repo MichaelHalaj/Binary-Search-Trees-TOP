@@ -150,15 +150,12 @@ class Tree {
         if(node === null) {
             return array;
         }
+        this.inorder(null, array, node.left);
         if(callback) {
             callback(node);
-        }
-        if(node.left === null && node.right === null) {
-            array.push(node.data);
-            return array;
-        }
-        this.inorder(null, array, node.left);
-        array.push(node.data);
+        } else {
+            array.push(node.data)
+        };
         this.inorder(null, array, node.right);
         return array;
     }
@@ -169,8 +166,9 @@ class Tree {
         }
         if(callback) {
             callback(node);
-        }
-        array.push(node.data);
+        } else {
+            array.push(node.data)
+        };
         this.preorder(null, array, node.left);
         this.preorder(null, array, node.right);
         return array;
@@ -180,12 +178,14 @@ class Tree {
         if(node === null) {
             return array;
         }
-        if(callback) {
-            callback(node);
-        }
+
         this.postorder(null, array, node.left);
         this.postorder(null, array, node.right);
-        array.push(node.data);
+        if(callback) {
+            callback(node);
+        } else {
+            array.push(node.data)
+        };
         return array;
     }
 
@@ -197,6 +197,19 @@ class Tree {
             return 0;
         }
         return 1 + Math.max(this.height(node.left), this.height(node.right));
+    }
+
+    depth(nodeVal, node = this.root) {
+        if(node === null) {
+            return 0;
+        }
+        if(nodeVal === node.data) {
+            return 0;
+        } else if(nodeVal > node.data) {
+            return 1 + this.depth(nodeVal, node.right);
+        } else {
+            return 1 + this.depth(nodeVal, node.left);
+        }
     }
 }
 
